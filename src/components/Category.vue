@@ -13,8 +13,8 @@ export default {
     Command
   },
   props: {
-    category: Array,
-    cli: Array
+    category: Object,
+    cli: String
   }
 };
 </script>

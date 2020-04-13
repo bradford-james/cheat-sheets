@@ -41,12 +41,12 @@ export default {
                   options: [
                     {
                       id: "optOneline",
-                      option: "log --oneline",
+                      option: "--oneline",
                       description: "Sample text"
                     },
                     {
                       id: "optGraph",
-                      option: "log --oneline --graph",
+                      option: "--oneline --graph",
                       description: "Sample text"
                     }
                   ]
@@ -59,7 +59,7 @@ export default {
                 },
                 {
                   id: "comRemote",
-                  command: "remote",
+                  command: "remote <origin> <branch>",
                   description: "Display all remote connections"
                 },
                 {
@@ -69,7 +69,7 @@ export default {
                 },
                 {
                   id: "comClone",
-                  command: "clone",
+                  command: "clone <url>",
                   description: "Copy a remote repository locally"
                 }
               ]
@@ -85,14 +85,22 @@ export default {
               commands: [
                 {
                   id: "comAdd",
-                  command: "set",
+                  command: "add <filename>",
                   description:
                     "Set all modified and added files to status 'Staged'"
                 },
                 {
                   id: "comCommit",
                   command: "commit",
-                  description: "Sample text"
+                  description: "Sample text",
+                  spacer: true,
+                  options: [
+                    {
+                      id: "optMessage",
+                      option: '-m <"commit title">',
+                      description: "Sample text"
+                    }
+                  ]
                 },
                 {
                   id: "comPush",
@@ -144,7 +152,7 @@ export default {
                   options: [
                     {
                       id: "optBranch",
-                      option: "checkout --branch",
+                      option: "--branch",
                       description: "Sample text"
                     }
                   ]

@@ -1,7 +1,7 @@
 <template>
   <div class="option-container">
     <div class="command el">
-      <pre>{{ `> ${cli} ${option.option ? option.option : ''}` }}</pre>
+      <pre>{{ `> ${cli} ${command} ${option.option ? option.option : ''}` }}</pre>
     </div>
     <div class="description el">{{ option.description }}</div>
   </div>
@@ -12,7 +12,8 @@ export default {
   name: "option",
   props: {
     option: Object,
-    cli: String
+    cli: String,
+    command: String
   }
 };
 </script>

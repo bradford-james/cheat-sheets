@@ -4,12 +4,20 @@
       <pre>{{ `> ${cli} ${command.command ? command.command : ''}` }}</pre>
     </div>
     <div class="description el">{{ command.description }}</div>
-    <div class="collapsible">
+    <div class="collapsible" @click="doThing" :class="{active: isActive}">
       <div class="option-tag">+ Options</div>
       <div class="bottom-line"></div>
     </div>
-    <Option v-for="option in command.options" :key="option.id" :option="option" :cli="cli" />
-    <div v-if="command.spacer" class="spacer"></div>
+    <div class="collapsee" :class="{'show-opts': showOpts}">
+      <Option
+        v-for="option in command.options"
+        :key="option.id"
+        :option="option"
+        :cli="cli"
+        :command="command.command"
+      />
+      <div v-if="command.spacer" class="spacer"></div>
+    </div>
   </div>
 </template>
 
@@ -23,6 +31,18 @@ export default {
   },
   components: {
     Option
+  },
+  data() {
+    return {
+      isActive: false,
+      showOpts: false
+    };
+  },
+  methods: {
+    doThing() {
+      this.isActive = !this.isActive;
+      this.showOpts = !this.showOpts;
+    }
   }
 };
 </script>
@@ -56,7 +76,35 @@ pre {
 
 .collapsible {
   display: flex;
-  margin: 7px 0 10px 0;
+  margin: 7px 0 3px 0;
+}
+
+.collapsible:hover {
+  color: grey;
+  cursor: pointer;
+}
+
+.active > .bottom-line,
+.collapsible:hover > .bottom-line {
+  border-color: #ddd;
+}
+
+.active {
+  color: rgb(220, 136, 100);
+}
+
+.active:hover {
+  color: rgb(220, 136, 100, 0.8);
+}
+
+.collapsee {
+  max-height: 0;
+  transition: max-height 0.3s ease-out;
+  overflow: hidden;
+}
+
+.show-opts {
+  max-height: 200px;
 }
 
 .option-tag {
