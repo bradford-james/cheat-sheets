@@ -54,7 +54,14 @@ export default {
                   id: "comStatus",
                   command: "status",
                   description:
-                    "Show git status of files in the git working directory"
+                    "Show git status of files in the git working directory",
+                  options: [
+                    {
+                      id: "optShort",
+                      option: "-s",
+                      description: "Sample text"
+                    }
+                  ]
                 },
                 {
                   id: "comRemote",
@@ -86,7 +93,15 @@ export default {
                   id: "comAdd",
                   command: "add <filename>",
                   description:
-                    "Set all modified and added files to status 'Staged'"
+                    "Set all modified and added files to status 'Staged'",
+                  options: [
+                    {
+                      id: "optAll",
+                      option: ".",
+                      description:
+                        "Adds all modified or added files in the git working directory"
+                    }
+                  ]
                 },
                 {
                   id: "comCommit",

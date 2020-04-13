@@ -4,17 +4,18 @@
       <pre>{{ `> ${cli} ${command.command ? command.command : ''}` }}</pre>
     </div>
     <div class="description el">{{ command.description }}</div>
-    <div class="collapsible" @click="doThing" :class="{active: isActive}">
+    <div v-if="hasOpts" class="collapsible" @click="toggleOpts" :class="{active: isActive}">
       <div class="option-tag">+ Options</div>
-      <div class="bottom-line"></div>
+      <div class="has-opts-bottom-line"></div>
     </div>
-    <div class="collapsee" :class="{'show-opts': showOpts}">
+    <div v-else class="no-opts-bottom-line"></div>
+    <div v-if="hasOpts" class="collapsee" :class="{'show-opts': showOpts}">
       <Option
         v-for="option in command.options"
         :key="option.id"
-        :option="option"
         :cli="cli"
         :command="command.command"
+        :option="option"
       />
       <div class="spacer"></div>
     </div>
@@ -35,13 +36,20 @@ export default {
   data() {
     return {
       isActive: false,
-      showOpts: false
+      showOpts: false,
+      hasOpts: false
     };
   },
+  created() {
+    this.setHasOpts();
+  },
   methods: {
-    doThing() {
+    toggleOpts() {
       this.isActive = !this.isActive;
       this.showOpts = !this.showOpts;
+    },
+    setHasOpts() {
+      this.hasOpts = this.command.options.length > 0 ? true : false;
     }
   }
 };
@@ -112,11 +120,18 @@ pre {
   font-size: 11px;
 }
 
-.bottom-line {
+.has-opts-bottom-line {
   height: 2px;
   border-bottom: solid 1px #ccc;
   width: 225px;
   margin-top: 5px;
+}
+
+.no-opts-bottom-line {
+  height: 2px;
+  border-bottom: solid 1px #ccc;
+  width: 288px;
+  margin: 12px 0 16px 50px;
 }
 
 .spacer {
