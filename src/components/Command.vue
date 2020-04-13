@@ -1,7 +1,7 @@
 <template>
   <div class="command-container">
     <div class="command el">
-      <pre>{{ `> ${cli} ${command.command ? command.command : ''}` }}</pre>
+      <pre>{{ `> ${cli} ${command.command} ${command.annotations ? command.annotations : ''}` }}</pre>
     </div>
     <div class="description el">{{ command.description }}</div>
     <div v-if="hasOpts" class="collapsible" @click="toggleOpts" :class="{active: isActive}">

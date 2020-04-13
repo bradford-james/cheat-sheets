@@ -26,12 +26,19 @@ export default {
           categories: [
             {
               id: "catBasic",
-              name: "Basics",
+              name: "Utilities",
               commands: [
                 {
                   id: "comInit",
                   command: "init",
-                  description: "Initialize Git repo locally"
+                  description: "Initialize empty Git repo in CWD",
+                  options: [
+                    {
+                      id: "optSetDir",
+                      option: "<directory>",
+                      description: "Specify directory to create git repo"
+                    }
+                  ]
                 },
                 {
                   id: "comLog",
@@ -46,7 +53,8 @@ export default {
                     {
                       id: "optGraph",
                       option: "--oneline --graph",
-                      description: "Sample text"
+                      description:
+                        "Show text/graphical representation of git history"
                     }
                   ]
                 },
@@ -59,14 +67,21 @@ export default {
                     {
                       id: "optShort",
                       option: "-s",
-                      description: "Sample text"
+                      description: "Show abbrevated git status view"
                     }
                   ]
                 },
                 {
                   id: "comRemote",
-                  command: "remote <origin> <branch>",
-                  description: "Display all remote connections"
+                  command: "remote",
+                  description: "Display all remote connections",
+                  options: [
+                    {
+                      id: "optAdd",
+                      option: "add <name> <url>",
+                      description: "Add remote connection"
+                    }
+                  ]
                 },
                 {
                   id: "comConfig",
@@ -75,8 +90,10 @@ export default {
                 },
                 {
                   id: "comClone",
-                  command: "clone <url>",
-                  description: "Copy a remote repository locally"
+                  command: "clone",
+                  annotations: "<url>",
+                  description:
+                    "Copy a remote repository locally (can be http or local project)"
                 }
               ]
             }
@@ -91,7 +108,8 @@ export default {
               commands: [
                 {
                   id: "comAdd",
-                  command: "add <filename>",
+                  command: "add",
+                  annotations: "<filename>",
                   description:
                     "Set all modified and added files to status 'Staged'",
                   options: [
@@ -155,7 +173,19 @@ export default {
                 {
                   id: "comBranch",
                   command: "branch",
-                  description: "Sample text"
+                  description: "See list of all local branches",
+                  options: [
+                    {
+                      id: "optSwitch",
+                      option: "<branch name>",
+                      description: "Switch to branch"
+                    },
+                    {
+                      id: "optCreate",
+                      option: "-b <branch name>",
+                      description: "Create and switch to branchs"
+                    }
+                  ]
                 },
                 {
                   id: "comCheckout",
