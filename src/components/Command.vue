@@ -16,7 +16,7 @@
         :cli="cli"
         :command="command.command"
       />
-      <div v-if="command.spacer" class="spacer"></div>
+      <div class="spacer"></div>
     </div>
   </div>
 </template>

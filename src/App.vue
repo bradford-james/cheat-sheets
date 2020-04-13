@@ -37,7 +37,6 @@ export default {
                   id: "comLog",
                   command: "log",
                   description: "Display logs of past commits on current branch",
-                  spacer: true,
                   options: [
                     {
                       id: "optOneline",
@@ -93,7 +92,6 @@ export default {
                   id: "comCommit",
                   command: "commit",
                   description: "Sample text",
-                  spacer: true,
                   options: [
                     {
                       id: "optMessage",
@@ -148,7 +146,6 @@ export default {
                   id: "comCheckout",
                   command: "checkout",
                   description: "Sample text",
-                  spacer: true,
                   options: [
                     {
                       id: "optBranch",
