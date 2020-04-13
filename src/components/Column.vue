@@ -5,6 +5,7 @@
       :key="category.id"
       :category="category"
       :cli="cli"
+      :showAllOpts="showAllOpts"
     />
   </div>
 </template>
@@ -18,7 +19,8 @@ export default {
   },
   props: {
     column: Object,
-    cli: String
+    cli: String,
+    showAllOpts: Boolean
   }
 };
 </script>

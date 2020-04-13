@@ -1,9 +1,22 @@
 <template>
   <div>
     <div class="main-container">
+      <div class="header-buttons">
+        <button
+          class="header-button"
+          @click="toggleShowAllOpts"
+          :class="{'header-button-active': buttonActive}"
+        >Show All Options</button>
+      </div>
       <div class="sheet-name">{{ sheetName }}</div>
       <div class="columns-container">
-        <Column v-for="column in columns" :key="column.id" :column="column" :cli="cli" />
+        <Column
+          v-for="column in columns"
+          :key="column.id"
+          :column="column"
+          :cli="cli"
+          :showAllOpts="showAllOpts"
+        />
       </div>
     </div>
   </div>
@@ -16,10 +29,18 @@ export default {
   components: {
     Column
   },
+  methods: {
+    toggleShowAllOpts() {
+      this.showAllOpts = !this.showAllOpts;
+      this.buttonActive = !this.buttonActive;
+    }
+  },
   data() {
     return {
       cli: "git",
       sheetName: "Git CLI",
+      buttonActive: false,
+      showAllOpts: false,
       columns: [
         {
           id: "col1",
@@ -227,15 +248,56 @@ export default {
   --desc-bg-color: rgba(250, 235, 215, 65%);
 }
 
+html {
+  overflow-y: scroll;
+}
+
 body {
   font-family: "Open Sans";
+}
+
+.header-buttons {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 50px;
+  margin-top: 20px;
+}
+
+.header-button {
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  user-select: none;
+  border: 1px solid transparent;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  border-radius: 0.2rem;
+  color: #fff;
+  background-color: rgba(224, 109, 59);
+  border-color: rgba(224, 109, 59);
+  cursor: pointer;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  outline: none;
+}
+
+.header-button:hover {
+  background-color: rgba(214, 86, 57);
+  border-color: rgba(214, 86, 57);
+}
+
+.header-button-active {
+  box-shadow: 0 0 0 0.2rem rgba(255, 120, 75, 50%);
 }
 
 .sheet-name {
   font-size: 36px;
   text-align: center;
   width: 200px;
-  margin: 50px auto 30px auto;
+  margin: 20px auto 30px auto;
 }
 
 .columns-container {

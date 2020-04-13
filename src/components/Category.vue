@@ -1,7 +1,13 @@
 <template>
   <div class="category-container">
     <div class="category el">{{ category.name }}</div>
-    <Command v-for="command in category.commands" :key="command.id" :command="command" :cli="cli" />
+    <Command
+      v-for="command in category.commands"
+      :key="command.id"
+      :command="command"
+      :cli="cli"
+      :showAllOpts="showAllOpts"
+    />
   </div>
 </template>
 
@@ -14,7 +20,8 @@ export default {
   },
   props: {
     category: Object,
-    cli: String
+    cli: String,
+    showAllOpts: Boolean
   }
 };
 </script>

@@ -28,7 +28,8 @@ export default {
   name: "command",
   props: {
     command: Object,
-    cli: String
+    cli: String,
+    showAllOpts: Boolean
   },
   components: {
     Option
@@ -42,6 +43,17 @@ export default {
   },
   created() {
     this.setHasOpts();
+  },
+  watch: {
+    showAllOpts: function() {
+      if (this.showAllOpts) {
+        this.showOpts = true;
+        this.isActive = true;
+      } else {
+        this.showOpts = false;
+        this.isActive = false;
+      }
+    }
   },
   methods: {
     toggleOpts() {
