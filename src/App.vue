@@ -27,11 +27,12 @@ export default {
         id: ++i,
         type: key
       }));
+    const init = this.$route.path === "/sheet" ? this.$route.query.name : "";
     return {
       chtSht: "",
-      cli: "",
-      sheetName: "",
-      columns: [],
+      cli: json[init].cli,
+      sheetName: json[init].sheetName,
+      columns: json[init].columns,
       showAllOpts: false,
       sheets: sheetNames
     };
