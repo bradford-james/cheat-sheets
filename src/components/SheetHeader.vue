@@ -1,11 +1,12 @@
 <template>
   <div>
     <div class="header-buttons">
-      <select @change="$router.push({ path: '/', query: { sheet: $event.target.value } })">
-        <option value disabled selected>Select your option</option>
-        <option value="git">git</option>
-        <option value="npm">npm</option>
-        <option value="docker">docker</option>
+      <select
+        class="router-select"
+        @change="$router.push({ path: '/sheet', query: { name: $event.target.value } })"
+      >
+        <option value disabled selected>Pick a sheet</option>
+        <option v-for="sheet in sheets" :key="sheet.id" :value="sheet.type">{{ sheet.type }}</option>
       </select>
       <button
         class="header-button"
@@ -20,7 +21,8 @@
 export default {
   name: "sheetHeader",
   props: {
-    showAllOpts: Boolean
+    showAllOpts: Boolean,
+    sheets: Array
   },
   methods: {
     clickEvent() {
@@ -45,9 +47,15 @@ export default {
 <style scoped>
 .header-buttons {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   padding: 0 50px;
   margin-top: 20px;
+}
+
+.router-select {
+  border-radius: 4px;
+  padding: 2px 5px;
+  font-weight: 600;
 }
 
 .header-button {

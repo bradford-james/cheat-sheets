@@ -1,7 +1,11 @@
 <template>
   <div id="app">
     <div class="main-container">
-      <SheetHeader :showAllOpts="showAllOpts" @toggle-show-all-opts="toggleShowAllOpts" />
+      <SheetHeader
+        :showAllOpts="showAllOpts"
+        @toggle-show-all-opts="toggleShowAllOpts"
+        :sheets="sheets"
+      />
       <router-view :columns="columns" :cli="cli" :showAllOpts="showAllOpts" :sheetName="sheetName"></router-view>
     </div>
   </div>
@@ -17,12 +21,19 @@ export default {
     SheetHeader
   },
   data() {
+    const sheetNames = Object.keys(json)
+      .sort()
+      .map((key, i) => ({
+        id: ++i,
+        type: key
+      }));
     return {
       chtSht: "",
       cli: "",
       sheetName: "",
       columns: [],
-      showAllOpts: false
+      showAllOpts: false,
+      sheets: sheetNames
     };
   },
   methods: {
@@ -32,7 +43,7 @@ export default {
   },
   watch: {
     $route: function() {
-      this.chtSht = this.$route.query.sheet;
+      this.chtSht = this.$route.query.name;
       this.cli = json[this.chtSht].cli;
       this.sheetName = json[this.chtSht].sheetName;
       this.columns = json[this.chtSht].columns;
