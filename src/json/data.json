@@ -1,0 +1,451 @@
+{
+  "gitHub": {
+    "sheetName": "GitHub Cli",
+    "cli": "gh",
+    "columns": [
+      {
+        "id": "col11",
+        "categories": [
+          {
+            "id": "cat1",
+            "name": "Basic",
+            "commands": [
+              {
+                "id": "com1",
+                "command": "init",
+                "description": "Initialize empty GitHub repo"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+	"parcel": {
+    "sheetName": "Parcel Cli",
+    "cli": "parcel",
+    "columns": [
+      {
+        "id": "col11",
+        "categories": [
+          {
+            "id": "cat1",
+            "name": "Basic",
+            "commands": [
+              {
+                "id": "com1",
+                "command": "init",
+                "description": "Sample text"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "bash": {
+    "sheetName": "Bash",
+    "cli": "",
+    "columns": [
+      {
+        "id": "col1",
+        "categories": [
+          {
+            "id": "cat1",
+            "name": "Basic",
+            "commands": [
+              {
+                "id": "comChangeDir",
+                "command": "cd <dir path>",
+                "description": "Change Directory"
+              },
+							{
+                "id": "comListDirectory",
+                "command": "ls",
+                "description": "Show directory contents (cwd)"
+              },
+							{
+                "id": "comCreateDir",
+                "command": "mkdir <name>",
+                "description": "Create directory"
+              },
+							{
+                "id": "comCreateFile",
+                "command": "touch <name>",
+                "description": "Create file"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "docker": {
+		"sheetName": "Docker Cli",
+		"cli": "docker",
+		"columns": [
+			{
+			  "id": "col1",
+				"categories": [
+				  {
+					  "id": "catBasics",
+						"name": "Basics",
+						"commands": [
+						  {
+                "id": "comBuild",
+                "command": "build -t <image> <directory>",
+                "description": "Builds docker image"
+							},
+						  {
+                "id": "comRun",
+                "command": "run -p <port>:<port> <image>",
+                "description": "Runs docker container"
+							},
+							{
+                "id": "comExec",
+                "command": "exec",
+                "description": "Run commands inside image"
+							},
+							{
+                "id": "comStart",
+                "command": "start <container>",
+                "description": "Start an existing container",
+								"options": [
+                  {
+                    "id": "optAttach",
+                    "option": "-a",
+                    "description": "Start a container and attach"
+                  }
+                ]
+							},
+							{
+                "id": "comShow",
+                "command": "ps",
+                "description": "Show all running containers",
+								"options": [
+                  {
+                    "id": "optAll",
+                    "option": "-a",
+                    "description": "Show all containers"
+                  }
+                ]
+							},
+							{
+                "id": "comImages",
+                "command": "images",
+                "description": "Show all docker images"
+							},
+							{
+                "id": "comDeleteImage",
+                "command": "rmi <image>",
+                "description": "Delete docker image"
+							},
+							{
+                "id": "comDeleteContainer",
+                "command": "rm <container>",
+                "description": "Delete docker container"
+							}
+						]
+					}
+				]
+			}
+		]
+	},
+  "npm": {
+    "sheetName": "NPM Cli",
+    "cli": "npm",
+    "columns": [
+      {
+        "id": "col1",
+        "categories": [
+          {
+            "id": "catBasic",
+            "name": "Main",
+            "commands": [
+              {
+                "id": "comInit",
+                "command": "init",
+                "description": "Initialize empty NPM repo",
+								"options": [
+                  {
+                    "id": "optDefaults",
+                    "option": "-y",
+                    "description": "Use config default for init"
+                  }
+                ]
+              },
+							{
+                "id": "comInstall",
+                "command": "install",
+								"annotations": "<package name>",
+                "description": "Used to set/get config settings",
+								"options": [
+                  {
+                    "id": "optDevDep",
+                    "option": "--save-dev <package name>",
+                    "description": "Save as a Dev Dependency"
+                  },
+									{
+                    "id": "optGlobal",
+                    "option": "-g <package name>",
+                    "description": "Save as a global package"
+                  }
+                ]
+							},
+							{
+                "id": "comPublish",
+                "command": "publish",
+                "description": "Push package to remote repo"
+							},
+							{
+                "id": "comRun",
+                "command": "run <script>",
+                "description": "Runs scripts defined in package.json"
+							}
+            ]
+          }
+        ]
+      },
+			{
+			  "id": "col2",
+				"categories": [
+				  {
+					  "id": "catUtilities",
+						"name": "Utilities",
+						"commands": [
+							{
+                "id": "comLogin",
+                "command": "login",
+                "description": "Log in to NPM account"
+							},
+							{
+                "id": "comConfig",
+                "command": "config",
+                "description": "Used to set/get config settings",
+								"options": [
+                  {
+                    "id": "optList",
+                    "option": "ls -l",
+                    "description": "Show all config settings"
+                  }
+                ]
+							},
+							{
+                "id": "comWhoAmI",
+                "command": "whoami",
+                "description": "Display current user"
+							},
+							{
+                "id": "comList",
+                "command": "list -g --depth 0",
+                "description": "List all global packages without dependencies"
+							}
+						]
+					}
+				]
+			}
+    ]
+  },
+  "git": {
+    "sheetName": "Git CLI",
+    "cli": "git",
+    "columns": [
+      {
+        "id": "col1",
+        "categories": [
+          {
+            "id": "catBasic",
+            "name": "Utilities",
+            "commands": [
+              {
+                "id": "comInit",
+                "command": "init",
+                "description": "Initialize empty Git repo in CWD",
+                "options": [
+                  {
+                    "id": "optSetDir",
+                    "option": "<directory>",
+                    "description": "Specify directory to create git repo"
+                  }
+                ]
+              },
+              {
+                "id": "comLog",
+                "command": "log",
+                "description": "Display logs of past commits on current branch",
+                "options": [
+                  {
+                    "id": "optOneline",
+                    "option": "--oneline",
+                    "description": "Sample text"
+                  },
+                  {
+                    "id": "optGraph",
+                    "option": "--oneline --graph",
+                    "description": "Show text/graphical representation of git history"
+                  }
+                ]
+              },
+              {
+                "id": "comStatus",
+                "command": "status",
+                "description": "Show git status of files in the git working directory",
+                "options": [
+                  {
+                    "id": "optShort",
+                    "option": "-s",
+                    "description": "Show abbrevated git status view"
+                  }
+                ]
+              },
+              {
+                "id": "comRemote",
+                "command": "remote",
+                "description": "Display all remote connections",
+                "options": [
+                  {
+                    "id": "optAdd",
+                    "option": "add <name> <url>",
+                    "description": "Add remote connection"
+                  }
+                ]
+              },
+              {
+                "id": "comConfig",
+                "command": "config",
+                "description": "Retrieve local configuration settings"
+              },
+              {
+                "id": "comClone",
+                "command": "clone",
+                "annotations": "<url>",
+                "description": "Copy a remote repository locally (can be http or local project)"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "col2",
+        "categories": [
+          {
+            "id": "catMain",
+            "name": "Main",
+            "commands": [
+              {
+                "id": "comAdd",
+                "command": "add",
+                "annotations": "<filename>",
+                "description": "Set file to status 'Staged'",
+                "options": [
+                  {
+                    "id": "optAll",
+                    "option": ".",
+                    "description": "Adds all modified or added files in the git working directory"
+                  }
+                ]
+              },
+              {
+                "id": "comCommit",
+                "command": "commit",
+                "description": "Create a commit. Uses default text editor to set commit message",
+                "options": [
+                  {
+                    "id": "optMessage",
+                    "option": "-m <\"commit title\">",
+                    "description": "Creates a commit, with the message specified in quotes"
+                  }
+                ]
+              },
+              {
+                "id": "comPush",
+                "command": "push",
+                "description": "Sample text",
+				        "options": [
+                  {
+                    "id": "optSetUpstream",
+                    "option": "--set-upstream <remote> <branch>",
+                    "description": "Sets remote branch to push to. Will create if branch does not exist at remote"
+                  }
+				]
+              },
+              {
+                "id": "comPull",
+                "command": "pull",
+                "description": "Sample text",
+				        "options": [
+                  {
+                    "id": "optRemoteBranch",
+                    "option": "<remote> <branch>",
+                    "description": "Can pull commits from seperate branch on remote into current local branch"
+                  }
+				]
+              }
+            ]
+          },
+          {
+            "id": "catUndo",
+            "name": "Undo",
+            "commands": [
+              {
+                "id": "comRevert",
+                "command": "revert",
+                "description": "Sample text"
+              },
+              {
+                "id": "comReset",
+                "command": "reset",
+                "description": "Sample text"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "col3",
+        "categories": [
+          {
+            "id": "catBranches",
+            "name": "Branches",
+            "commands": [
+              {
+                "id": "comBranch",
+                "command": "branch",
+                "description": "See list of all local branches",
+                "options": [
+                  {
+                    "id": "optSwitch",
+                    "option": "<branch name>",
+                    "description": "Switch to branch"
+                  }
+                ]
+              },
+              {
+                "id": "comCheckout",
+                "command": "checkout <branch>",
+                "description": "Switch to local branch",
+                "options": [
+                  {
+                    "id": "optCreate",
+                    "option": "-b <branch name>",
+                    "description": "Create and switch to branchs"
+                  }
+                ]
+              },
+              {
+                "id": "comMerge",
+                "command": "merge",
+                "description": "Sample text"
+              },
+              {
+                "id": "comRebase",
+                "command": "rebase",
+                "description": "Sample text"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

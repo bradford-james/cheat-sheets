@@ -1,15 +1,24 @@
 <template>
   <div class="command-container">
     <div class="command el">
-      <pre>{{ `> ${cli} ${command.command} ${command.annotations ? command.annotations : ''}` }}</pre>
+      <pre>{{
+        `> ${cli} ${command.command} ${
+          command.annotations ? command.annotations : ''
+        }`
+      }}</pre>
     </div>
     <div class="description el">{{ command.description }}</div>
-    <div v-if="hasOpts" class="collapsible" @click="toggleOpts" :class="{active: isActive}">
+    <div
+      v-if="hasOpts"
+      class="collapsible"
+      @click="toggleOpts"
+      :class="{ active: isActive }"
+    >
       <div class="option-tag">+ Options</div>
       <div class="has-opts-bottom-line"></div>
     </div>
     <div v-else class="no-opts-bottom-line"></div>
-    <div v-if="hasOpts" class="collapsee" :class="{'show-opts': showOpts}">
+    <div v-if="hasOpts" class="collapsee" :class="{ 'show-opts': showOpts }">
       <Option
         v-for="option in command.options"
         :key="option.id"
@@ -23,9 +32,9 @@
 </template>
 
 <script>
-import Option from "@/components/Option.vue";
+import Option from '@/components/Option.vue';
 export default {
-  name: "command",
+  name: 'command',
   props: {
     command: Object,
     cli: String,
@@ -61,7 +70,8 @@ export default {
       this.showOpts = !this.showOpts;
     },
     setHasOpts() {
-      this.hasOpts = this.command.options.length > 0 ? true : false;
+      this.hasOpts =
+        this.command.options && this.command.options.length > 0 ? true : false;
     }
   }
 };
