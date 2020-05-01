@@ -5,7 +5,15 @@
 </template>
 
 <script>
-export default {};
+export default {
+  name: 'notFound',
+  props: {
+    showHeader: Boolean,
+  },
+  mounted() {
+    this.$emit('show-header', this.showHeader);
+  },
+};
 </script>
 
 <style scoped>

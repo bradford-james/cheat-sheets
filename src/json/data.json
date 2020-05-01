@@ -315,6 +315,11 @@
                 "command": "config",
                 "description": "Retrieve local configuration settings"
               },
+			  {
+                "id": "comDiff",
+                "command": "diff",
+                "description": "Prints diff against working directory and most recent commit"
+              },
               {
                 "id": "comClone",
                 "command": "clone",

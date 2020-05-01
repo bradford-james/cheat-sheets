@@ -3,44 +3,49 @@
     <div class="header-buttons">
       <select
         class="router-select"
-        @change="$router.push({ path: '/sheet', query: { name: $event.target.value } })"
+        @change="
+          $router.push({ path: '/sheet', query: { name: $event.target.value } })
+        "
       >
         <option value disabled selected>Pick a sheet</option>
-        <option v-for="sheet in sheets" :key="sheet.id" :value="sheet.type">{{ sheet.type }}</option>
+        <option v-for="sheet in sheets" :key="sheet.id" :value="sheet.type">{{
+          sheet.type
+        }}</option>
       </select>
       <button
         class="header-button"
         @click="clickEvent"
         :class="{ 'header-button-active': buttonActive }"
-      >{{ showToggleText }}</button>
+      >
+        {{ showToggleText }}
+      </button>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "sheetHeader",
+  name: 'sheetHeader',
   props: {
-    showAllOpts: Boolean,
-    sheets: Array
+    sheets: Array,
   },
   methods: {
     clickEvent() {
-      this.$emit("toggle-show-all-opts");
+      this.$emit('toggle-show-all-opts');
       this.buttonActive = !this.buttonActive;
       if (this.buttonActive) {
-        this.showToggleText = "Hide Options";
+        this.showToggleText = 'Hide Options';
       } else {
-        this.showToggleText = "Show All Options";
+        this.showToggleText = 'Show All Options';
       }
-    }
+    },
   },
   data() {
     return {
       buttonActive: false,
-      showToggleText: "Show All Options"
+      showToggleText: 'Show All Options',
     };
-  }
+  },
 };
 </script>
 

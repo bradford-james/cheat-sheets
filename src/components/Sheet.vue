@@ -14,18 +14,22 @@
 </template>
 
 <script>
-import Column from "@/components/Column.vue";
+import Column from '@/components/Column.vue';
 export default {
-  name: "sheet",
+  name: 'sheet',
   components: {
-    Column
+    Column,
   },
   props: {
     columns: Array,
     cli: String,
     sheetName: String,
-    showAllOpts: Boolean
-  }
+    showAllOpts: Boolean,
+    showHeader: Boolean,
+  },
+  mounted() {
+    this.$emit('show-header', this.showHeader);
+  },
 };
 </script>
 
@@ -41,5 +45,6 @@ export default {
   display: flex;
   margin: 0 auto;
   width: 1260px;
+  justify-content: center;
 }
 </style>

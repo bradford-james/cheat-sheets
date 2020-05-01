@@ -5,51 +5,77 @@
         :showAllOpts="showAllOpts"
         @toggle-show-all-opts="toggleShowAllOpts"
         :sheets="sheets"
+        v-if="headerVisible"
       />
-      <router-view :columns="columns" :cli="cli" :showAllOpts="showAllOpts" :sheetName="sheetName"></router-view>
+      <router-view
+        :columns="columns"
+        :cli="cli"
+        :showAllOpts="showAllOpts"
+        :sheetName="sheetName"
+        @show-header="showHeader"
+        :sheets="sheets"
+      ></router-view>
     </div>
   </div>
 </template>
 
 <script>
-import SheetHeader from "@/components/SheetHeader.vue";
-import json from "@/json/data.json";
+import SheetHeader from '@/components/SheetHeader.vue';
+import SheetsDataService from './services/SheetsDataService';
 
 export default {
-  name: "app",
+  name: 'app',
+  props: {},
   components: {
-    SheetHeader
+    SheetHeader,
   },
   data() {
-    const sheetNames = Object.keys(json)
-      .sort()
-      .map((key, i) => ({
-        id: ++i,
-        type: key
-      }));
-    const init = this.$route.path === "/sheet" ? this.$route.query.name : "";
     return {
-      chtSht: "",
-      cli: json[init].cli,
-      sheetName: json[init].sheetName,
-      columns: json[init].columns,
+      cli: '',
+      sheetName: '',
+      columns: [],
       showAllOpts: false,
-      sheets: sheetNames
+      sheets: [],
+      headerVisible: true,
     };
   },
   methods: {
+    retrieveSheet() {
+      SheetsDataService.getSheet(this.$route.query.name).then((response) => {
+        this.columns = response.data.columns;
+        this.cli = response.data.cli;
+        this.sheetName = response.data.sheetName;
+      });
+    },
+    retrieveSheetsList() {
+      SheetsDataService.getSheetsList().then((response) => {
+        let idCounter = 0;
+        this.sheets = response.data.map((sheetObj) => {
+          return {
+            id: idCounter++,
+            type: sheetObj.cli,
+          };
+        });
+      });
+    },
     toggleShowAllOpts() {
       this.showAllOpts = !this.showAllOpts;
-    }
+    },
+    showHeader(bool) {
+      console.log('main check');
+      this.headerVisible = bool;
+    },
   },
   watch: {
     $route: function() {
-      this.chtSht = this.$route.query.name;
-      this.cli = json[this.chtSht].cli;
-      this.sheetName = json[this.chtSht].sheetName;
-      this.columns = json[this.chtSht].columns;
-    }
-  }
+      this.retrieveSheet();
+      this.retrieveSheetsList();
+    },
+  },
+  mounted() {
+    this.retrieveSheet();
+    this.retrieveSheetsList();
+  },
 };
 </script>
 
@@ -66,6 +92,6 @@ html {
 }
 
 body {
-  font-family: "Open Sans";
+  font-family: 'Open Sans';
 }
 </style>
