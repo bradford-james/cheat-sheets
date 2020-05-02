@@ -73,6 +73,9 @@ export default {
     },
   },
   mounted() {
+    console.log(`Production URL: ${process.env.PRODUCTION_CORS_URL}`);
+    console.log('----');
+    console.log(process.env);
     this.retrieveSheet();
     this.retrieveSheetsList();
   },
