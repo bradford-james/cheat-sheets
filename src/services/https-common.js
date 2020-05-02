@@ -7,7 +7,6 @@ const resourceURL =
 
 module.exports = axios.create({
   baseURL: resourceURL,
-  // baseURL: 'https://cheat-sheets-api.herokuapp.com/',
   headers: {
     'Content-type': 'application/json',
   },
