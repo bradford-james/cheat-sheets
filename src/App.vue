@@ -62,13 +62,12 @@ export default {
       this.showAllOpts = !this.showAllOpts;
     },
     showHeader(bool) {
-      console.log('main check');
       this.headerVisible = bool;
     },
   },
   watch: {
     $route: function() {
-      //this.retrieveSheet();
+      this.retrieveSheet();
       this.retrieveSheetsList();
     },
   },
@@ -76,7 +75,7 @@ export default {
     console.log(`Production URL: ${process.env.PRODUCTION_CORS_URL}`);
     console.log('----');
     console.log(process.env);
-    //this.retrieveSheet();
+    this.retrieveSheet();
     this.retrieveSheetsList();
   },
 };
