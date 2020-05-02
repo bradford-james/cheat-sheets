@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "PRODUCTION_CORS_URL=$PRODUCTION_CORS_URL && vue-cli-service build",
+    "build": "VUE_APP_PRODUCTION_CORS_URL=$PRODUCTION_CORS_URL vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
