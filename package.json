@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "node ./scripts/create-env.js && vue-cli-service build",
+    "build": "PRODUCTION_CORS_URL=$PRODUCTION_CORS_URL && vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
