@@ -68,7 +68,7 @@ export default {
   },
   watch: {
     $route: function() {
-      this.retrieveSheet();
+      //this.retrieveSheet();
       this.retrieveSheetsList();
     },
   },
@@ -76,7 +76,7 @@ export default {
     console.log(`Production URL: ${process.env.PRODUCTION_CORS_URL}`);
     console.log('----');
     console.log(process.env);
-    this.retrieveSheet();
+    //this.retrieveSheet();
     this.retrieveSheetsList();
   },
 };
