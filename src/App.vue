@@ -41,16 +41,16 @@ export default {
   },
   methods: {
     retrieveSheet() {
-      SheetsDataService.getSheet(this.$route.query.name).then((response) => {
+      SheetsDataService.getSheet(this.$route.query.name).then(response => {
         this.columns = response.data.columns;
         this.cli = response.data.cli;
         this.sheetName = response.data.sheetName;
       });
     },
     retrieveSheetsList() {
-      SheetsDataService.getSheetsList().then((response) => {
+      SheetsDataService.getSheetsList().then(response => {
         let idCounter = 0;
-        this.sheets = response.data.map((sheetObj) => {
+        this.sheets = response.data.map(sheetObj => {
           return {
             id: idCounter++,
             type: sheetObj.cli,
@@ -72,9 +72,6 @@ export default {
     },
   },
   mounted() {
-    console.log(`Production URL: ${process.env.PRODUCTION_CORS_URL}`);
-    console.log('----');
-    console.log(process.env);
     this.retrieveSheet();
     this.retrieveSheetsList();
   },
