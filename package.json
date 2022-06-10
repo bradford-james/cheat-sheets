@@ -34,7 +34,7 @@
     "cz-conventional-changelog": "^3.1.0",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
-    "semantic-release": "^17.0.7",
+    "semantic-release": "^19.0.3",
     "vue-template-compiler": "^2.6.11"
   },
   "eslintConfig": {
